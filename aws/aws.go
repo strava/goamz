@@ -23,6 +23,7 @@ import (
 	"path"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -241,7 +242,13 @@ type credentials struct {
 	Expiration      string
 }
 
+var metadataLock sync.Mutex
+
 func GetMetaData(path string) (contents []byte, err error) {
+	// A way to throttle these requests.
+	metadataLock.Lock()
+	defer metadataLock.Unlock()
+
 	c := http.Client{
 		Transport: &http.Transport{
 			Dial: func(netw, addr string) (net.Conn, error) {

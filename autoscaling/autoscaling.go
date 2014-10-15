@@ -3,7 +3,7 @@ package autoscaling
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/crowdmob/goamz/aws"
+	"github.com/strava/goamz/aws"
 	"log"
 	"net/http"
 	"net/http/httputil"

@@ -1,9 +1,9 @@
 package iam_test
 
 import (
-	"github.com/crowdmob/goamz/aws"
-	"github.com/crowdmob/goamz/iam"
-	"github.com/crowdmob/goamz/iam/iamtest"
+	"github.com/strava/goamz/aws"
+	"github.com/strava/goamz/iam"
+	"github.com/strava/goamz/iam/iamtest"
 	"gopkg.in/check.v1"
 )
 

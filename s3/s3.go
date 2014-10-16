@@ -1037,8 +1037,10 @@ func (s3 *S3) doHttpRequest(hreq *http.Request, resp interface{}) (*http.Respons
 			s3.httpClientLock.Lock()
 			if s3.HTTPClient == nil {
 				c = s3.buildHTTPClient()
+				s3.HTTPClient = c
+			} else {
+				c = s3.HTTPClient
 			}
-			s3.HTTPClient = c
 			s3.httpClientLock.Unlock()
 		}
 	} else {

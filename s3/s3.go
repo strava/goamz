@@ -1074,6 +1074,7 @@ func (s3 *S3) doHttpRequest(hreq *http.Request, resp interface{}) (*http.Respons
 func (s3 *S3) buildHTTPClient() *http.Client {
 	return &http.Client{
 		Transport: &http.Transport{
+			MaxIdleConnsPerHost: 25,
 			Dial: func(netw, addr string) (c net.Conn, err error) {
 				if s3.ConnectTimeout > 0 {
 					c, err = net.DialTimeout(netw, addr, s3.ConnectTimeout)
